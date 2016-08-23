@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/loginFederado.iml" filepath="$PROJECT_DIR$/.idea/modules/loginFederado.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/loginFederado_integrationTest.iml" filepath="$PROJECT_DIR$/.idea/modules/loginFederado_integrationTest.iml" group="loginFederado" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/loginFederado_main.iml" filepath="$PROJECT_DIR$/.idea/modules/loginFederado_main.iml" group="loginFederado" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/loginFederado_test.iml" filepath="$PROJECT_DIR$/.idea/modules/loginFederado_test.iml" group="loginFederado" />
+    </modules>
+  </component>
+</project>
