@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.grails.plugins:spring-security-oauth2-google:1.1.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails.plugins/spring-security-oauth2-google/1.1.0/c70a9977389e03190bcc15412d6d617364e313c7/spring-security-oauth2-google-1.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails.plugins/spring-security-oauth2-google/1.1.0/a58d203206a2489442cd05ad381a044aa9c579c8/spring-security-oauth2-google-1.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

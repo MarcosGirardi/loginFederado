@@ -71,6 +71,14 @@
                         </li>
                     </g:each>
                 </ul>
+                <ul>
+                    <oauth2:connect provider="google">Google</oauth2:connect> -->
+                    <oauth2:connect provider="google" id="google-connect-link">Google</oauth2:connect>
+
+                    Logged with google?
+                    <oauth2:ifLoggedInWith provider="google">yes</oauth2:ifLoggedInWith>
+                    <oauth2:ifNotLoggedInWith provider="google">no</oauth2:ifNotLoggedInWith>
+                </ul>
             </div>
         </section>
     </div>
