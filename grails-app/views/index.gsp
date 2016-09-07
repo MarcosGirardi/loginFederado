@@ -72,6 +72,22 @@
                     </g:each>
                 </ul>
             </div>
+
+            <div>
+                <sec:ifNotLoggedIn>
+                    <g:link controller='logincode' action='auth' params="[admin: true]">Login as Admin</g:link>
+                    <g:link controller='logincode' action='auth' params="[user: true]">Login as User</g:link>
+                </sec:ifNotLoggedIn>
+                <sec:ifLoggedIn>
+                    <sec:ifAllGranted roles='ROLE_ADMIN'>
+                        Welcome Back Admin!
+                    </sec:ifAllGranted>
+                    <sec:ifAllGranted roles='ROLE_USER'>
+                        Welcome Back User!
+                    </sec:ifAllGranted>
+                </sec:ifLoggedIn>
+            </div>
+
         </section>
     </div>
 
