@@ -75,15 +75,23 @@
 
             <div>
                 <sec:ifNotLoggedIn>
-                    <g:link controller='logincode' action='auth' params="[admin: true]">Login as Admin</g:link>
-                    <g:link controller='logincode' action='auth' params="[user: true]">Login as User</g:link>
+                    <g:link controller='logincode' action='auth' params="[email: 'sudo@sudo']">Login as SuperUser</g:link>
+                    <g:link controller='logincode' action='auth' params="[email: 'admin@admin']">Login as Admin</g:link>
+                    <g:link controller='logincode' action='auth' params="[email: 'user@user']">Login as User</g:link>
                 </sec:ifNotLoggedIn>
                 <sec:ifLoggedIn>
+                    <sec:ifAllGranted roles='ROLE_ADMIN,ROLE_USER'>
+                        Welcome Back SuperUser!
+                    </sec:ifAllGranted>
                     <sec:ifAllGranted roles='ROLE_ADMIN'>
-                        Welcome Back Admin!
+                        <sec:ifNotGranted roles='ROLE_USER'>
+                            Welcome Back Admin!
+                        </sec:ifNotGranted>
                     </sec:ifAllGranted>
                     <sec:ifAllGranted roles='ROLE_USER'>
-                        Welcome Back User!
+                        <sec:ifNotGranted roles='ROLE_ADMIN'>
+                            Welcome Back User!
+                        </sec:ifNotGranted>
                     </sec:ifAllGranted>
                 </sec:ifLoggedIn>
             </div>

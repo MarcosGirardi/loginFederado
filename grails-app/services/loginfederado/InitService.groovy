@@ -17,6 +17,7 @@ class InitService {
         def adminUser = SecUser.findByUsername('admin') ?: new SecUser(
                 username: 'admin',
                 password: 'admin',
+                email: 'admin@admin',
                 enabled: true).save(failOnError: true)
         if (!adminUser.authorities.contains(adminRole)) {
             SecUserSecRole.create adminUser, adminRole
@@ -26,6 +27,7 @@ class InitService {
         def userUser = SecUser.findByUsername('user') ?: new SecUser(
                 username: 'user',
                 password: 'user',
+                email: 'user@user',
                 enabled: true).save(failOnError: true)
         if (!userUser.authorities.contains(userRole)) {
             SecUserSecRole.create userUser, userRole
@@ -35,6 +37,7 @@ class InitService {
         def sudoUser = SecUser.findByUsername('sudo') ?: new SecUser(
                 username: 'sudo',
                 password: 'sudo',
+                email: 'sudo@sudo',
                 enabled: true).save(failOnError: true)
         if (!sudoUser.authorities.contains(adminRole)) {
             SecUserSecRole.create sudoUser, adminRole
@@ -47,4 +50,5 @@ class InitService {
 
         log.println("Usuarios y roles creados")
     }
+
 }
