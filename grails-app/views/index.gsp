@@ -81,16 +81,16 @@
                 </sec:ifNotLoggedIn>
                 <sec:ifLoggedIn>
                     <sec:ifAllGranted roles='ROLE_ADMIN,ROLE_USER'>
-                        Welcome Back SuperUser!
+                        Welcome Back SuperUser <sec:username/>!
                     </sec:ifAllGranted>
                     <sec:ifAllGranted roles='ROLE_ADMIN'>
                         <sec:ifNotGranted roles='ROLE_USER'>
-                            Welcome Back Admin!
+                            Welcome Back Admin <sec:username/>!
                         </sec:ifNotGranted>
                     </sec:ifAllGranted>
                     <sec:ifAllGranted roles='ROLE_USER'>
                         <sec:ifNotGranted roles='ROLE_ADMIN'>
-                            Welcome Back User!
+                            Welcome Back User <sec:username/>!
                         </sec:ifNotGranted>
                     </sec:ifAllGranted>
                 </sec:ifLoggedIn>
