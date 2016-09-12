@@ -76,15 +76,11 @@ grails:
             oauth2:
                 providers:
                     google:
-                        api: https://www.googleapis.com/oauth2/v3/userinfo
                         api_key: '895656730552-lc2llkq5ro647lmqoos2i29r5r73gfte.apps.googleusercontent.com'               #needed
                         api_secret: 'hWl_wGpKm7nck0ZPHKkzOG_n'         #needed
                         successUri: "/"    #optional
                         failureUri: "/OAuthID/failure"    #optional
                         callback: "/OAuthID/google"     #optional
-                        scope: profile
-                        state: true
-            #grails.google.api.url: "https://www.googleapis.com/oauth2/v1/userinfo"
     mime:
         disable:
             accept:

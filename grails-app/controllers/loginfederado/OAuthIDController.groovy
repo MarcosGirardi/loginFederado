@@ -3,7 +3,7 @@ package loginfederado
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
-
+import groovy.json.JsonSlurper
 
 @Transactional(readOnly = true)
 class OAuthIDController {
@@ -14,24 +14,49 @@ class OAuthIDController {
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def google() {
 
-        log.println("ASDDSA")
+        log.println("--------------------------ASDDSA---------------------------------")
         log.println("${params}")
-
-        def code = "https://www.googleapis.com/oauth2/v1/userinfo?access_token="+params.code
-        log.println(code)
-
-        def respuesta = new URL("http://stackoverflow.com").getText()
-        //log.println(respuesta)
 
         if (params.code){
 
+            def codigo = params.code
+            def cliente = "895656730552-lc2llkq5ro647lmqoos2i29r5r73gfte.apps.googleusercontent.com"
+            def secreto = "hWl_wGpKm7nck0ZPHKkzOG_n"
+            def uri = "http://localhost:8080/OAuthID/google"
+            def grant = "authorization_code"
 
+            String urlParameters =  "code=" + codigo + "&client_id=" + cliente + "&client_secret=" + secreto + "&redirect_uri=" + uri + "&grant_type=" + grant
+
+            def url = new URL("https://accounts.google.com/o/oauth2/token?")
+            def conn = url.openConnection()
+            conn.setDoOutput(true)
+            def writer = new OutputStreamWriter(conn.getOutputStream())
+
+            writer.write(urlParameters)
+            writer.flush()
+            String line
+            def resp = ""
+            def reader = new BufferedReader(new     InputStreamReader(conn.getInputStream()))
+            while ((line = reader.readLine()) != null) {
+                    resp = resp + line
+            }
+            writer.close()
+            reader.close()
+
+            def list = new JsonSlurper().parseText(resp)
+            println list["access_token"]
+
+            def token = list["access_token"]
+
+            urlParameters = "access_token=" + token
+            resp = new URL("https://www.googleapis.com/oauth2/v3/tokeninfo?" + urlParameters).getText()
+
+            list = new JsonSlurper().parseText(resp)
+
+            def mail = list["email"]
+            println mail
 
         }
-
-
-        //def resp = get "${code}"c
-        //log.println(resp)
 
         redirect action: 'index'
     }
