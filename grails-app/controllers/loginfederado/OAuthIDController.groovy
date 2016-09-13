@@ -19,6 +19,7 @@ class OAuthIDController {
 
         if (params.code){
 
+    //Armado de la url para solicitar el access_token
             def codigo = params.code
             def cliente = "895656730552-lc2llkq5ro647lmqoos2i29r5r73gfte.apps.googleusercontent.com"
             def secreto = "hWl_wGpKm7nck0ZPHKkzOG_n"
@@ -27,6 +28,7 @@ class OAuthIDController {
 
             String urlParameters =  "code=" + codigo + "&client_id=" + cliente + "&client_secret=" + secreto + "&redirect_uri=" + uri + "&grant_type=" + grant
 
+    //Solicitud del access_token (POST)
             def url = new URL("https://accounts.google.com/o/oauth2/token?")
             def conn = url.openConnection()
             conn.setDoOutput(true)
@@ -43,14 +45,17 @@ class OAuthIDController {
             writer.close()
             reader.close()
 
+    //Conversion de la respuesta en una lista para sacar el access_token
             def list = new JsonSlurper().parseText(resp)
             println list["access_token"]
 
+    //Armado de la url para solicitar los datos del usuario autenticado (GET)
             def token = list["access_token"]
 
             urlParameters = "access_token=" + token
             resp = new URL("https://www.googleapis.com/oauth2/v3/tokeninfo?" + urlParameters).getText()
 
+    //Conversion de la respuesta en una lista para sacar el email
             list = new JsonSlurper().parseText(resp)
 
             def mail = list["email"]
