@@ -72,6 +72,28 @@
                     </g:each>
                 </ul>
             </div>
+
+            <div>
+                <sec:ifNotLoggedIn>
+                    <oauth2:connect provider="google" id="google-connect-link">Google</oauth2:connect>
+                </sec:ifNotLoggedIn>
+                <sec:ifLoggedIn>
+                    <sec:ifAllGranted roles='ROLE_ADMIN,ROLE_USER'>
+                        Welcome Back SuperUser <sec:username/>!
+                    </sec:ifAllGranted>
+                    <sec:ifAllGranted roles='ROLE_ADMIN'>
+                        <sec:ifNotGranted roles='ROLE_USER'>
+                            Welcome Back Admin <sec:username/>!
+                        </sec:ifNotGranted>
+                    </sec:ifAllGranted>
+                    <sec:ifAllGranted roles='ROLE_USER'>
+                        <sec:ifNotGranted roles='ROLE_ADMIN'>
+                            Welcome Back User <sec:username/>!
+                        </sec:ifNotGranted>
+                    </sec:ifAllGranted>
+                </sec:ifLoggedIn>
+            </div>
+
         </section>
     </div>
 

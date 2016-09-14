@@ -71,6 +71,16 @@ endpoints:
 
 ---
 grails:
+    plugin:
+        springsecurity:
+            oauth2:
+                providers:
+                    google:
+                        api_key: '895656730552-lc2llkq5ro647lmqoos2i29r5r73gfte.apps.googleusercontent.com'               #needed
+                        api_secret: 'hWl_wGpKm7nck0ZPHKkzOG_n'         #needed
+                        successUri: "/"    #optional
+                        failureUri: "/Oauth/failure"    #optional
+                        callback: "/Oauth/google"     #optional
     mime:
         disable:
             accept:

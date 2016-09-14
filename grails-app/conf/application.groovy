@@ -4,6 +4,7 @@
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'loginfederado.SecUser'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'loginfederado.SecUserSecRole'
 grails.plugin.springsecurity.authority.className = 'loginfederado.SecRole'
+grails.plugin.springsecurity.logout.postOnly = false
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/',               access: ['permitAll']],
 	[pattern: '/error',          access: ['permitAll']],
