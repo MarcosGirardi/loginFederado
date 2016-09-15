@@ -60,6 +60,13 @@ dependencies {
     testCompile "org.grails.plugins:geb"
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
+
+    //Spring Security Core
+    compile 'org.grails.plugins:spring-security-core:3.1.1'
+    //Spring Security OAuth
+    compile 'org.grails.plugins:spring-security-oauth2:1.+'
+    //Spring Security OAuth Google
+    compile 'org.grails.plugins:spring-security-oauth2-google:1.1.+'
 }
 
 assets {
